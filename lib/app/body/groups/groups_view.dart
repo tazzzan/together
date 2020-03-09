@@ -39,7 +39,10 @@ class UserViewState extends State<GroupsView> {
 
     groupViewWidgets.add(
       FloatingActionButton(
-        onPressed: () => createNewGroup(myController.text),
+        onPressed: () => {
+          createNewGroup(myController.text),
+
+      },
         tooltip: 'Create',
         child: Icon(Icons.add),
         backgroundColor: Colors.white,
@@ -64,6 +67,10 @@ class UserViewState extends State<GroupsView> {
   }
 
   createNewGroup(String name) {
+    if (name == '') {
+      return;
+    }
+
     setState(() {
       widget.groupRepo.createGroup(name, 'own');
     });

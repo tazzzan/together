@@ -58,10 +58,25 @@ class UserViewState extends State<UserView> {
         .sort((Group a, Group b) => b.interestScore.compareTo(a.interestScore));
     groups.forEach((group) => userWidgets.add(
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(group.name +
-                  ' has interest: ' +
-                  group.interestScore.toString()),
+              Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(5),
+                    child:
+                        Text('You are interested in ' + group.name + ' by: '),
+                  )
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(5),
+                    child: Text(group.interestScore.toString()),
+                  )
+                ],
+              )
             ],
           ),
         ));
